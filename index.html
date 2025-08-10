@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tugbo River Flood Information</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #b3e0ff, #e6f7ff);
+      color: #00334d;
+    }
+    header {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    nav {
+      background-color: #004466;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+    nav a {
+      background-color: #006699;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #0099cc;
+    }
+    .nav-extra {
+      margin: 10px 0 30px;
+      text-align: center;
+    }
+    .nav-extra a {
+      background-color: #006699;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+    .nav-extra a:hover {
+      background-color: #0099cc;
+    }
+    main {
+      padding: 60px 20px 20px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .page-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .page-layout img {
+      width: 60%;
+      height: auto;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    .page-layout .stats {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      flex: 1;
+    }
+    footer {
+      background-color: #004466;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .home-btn {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      background-color: #006699;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      font-size: 1.2em;
+      text-align: center;
+      width: 40px;
+      height: 40px;
+      line-height: 24px;
+      transition: background-color 0.3s ease;
+    }
+    .home-btn:hover {
+      background-color: #0099cc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🌊 Tugbo River
+    <a href="#" class="home-btn" id="homeBtn" onclick="goHome()">🏠</a>
+  </header>
+
+  <nav>
+    <a href="#" onclick="event.preventDefault(); openPage('routes')">Flood Routes</a>
+    <a href="#" onclick="event.preventDefault(); openPage('magnitudes')">Flood Magnitudes</a>
+  </nav>
+
+  <div class="nav-extra">
+    <a href="#" onclick="event.preventDefault(); openPage('about')">Know more about Tugbo River?</a>
+  </div>
+
+  <main id="content">
+    <section class="card">
+      <h2>Welcome</h2>
+      <p>Select an option above to view detailed information about flood routes, magnitudes, or background on Tugbo River.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Flood Awareness Initiative
+  </footer>
+
+  <script>
+    const homeBtn = document.getElementById('homeBtn');
+
+    function openPage(type) {
+      let content = document.getElementById('content');
+      homeBtn.style.display = 'inline-block';
+
+      if (type === 'routes') {
+        content.innerHTML = `
+          <div class="page-layout">
+            <img src="" alt="Tugbo River Flood Routes" />
+            <div class="stats">
+              <h2>Flood Routes Statistics</h2>
+              <p>Tugbo River's floodwaters often affect Barangay Tugbo and nearby low-lying barangays such as Umabay Interior and Exterior. Routes typically follow the natural river channel towards Masbate Bay, flooding agricultural fields and residential areas before reaching the coast.</p>
+              <ul>
+                <li>Primary flood path: River channel → Barangay Tugbo → Masbate Bay</li>
+                <li>Secondary flood paths: Tributary creeks from uplands</li>
+                <li>Evacuation routes: Barangay roads to higher elevation zones inland</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      } else if (type === 'magnitudes') {
+        content.innerHTML = `
+          <div class="page-layout">
+            <img src="" alt="Tugbo River Flood Magnitudes" />
+            <div class="stats">
+              <h2>Flood Magnitude Statistics</h2>
+              <p>Flood severity depends on typhoon intensity and rainfall volume. Notable flood events occurred during Typhoon Tisoy (2019), Quinta (2020), and Paeng (2022), with water levels rising up to 1–2 meters in low-lying zones.</p>
+              <ul>
+                <li>High: &gt;2 meters (severe damage, total evacuation needed)</li>
+                <li>Moderate: 1–2 meters (damage to crops & homes)</li>
+                <li>Low: &lt;1 meter (localized flooding, road closures)</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      } else if (type === 'about') {
+        content.innerHTML = `
+          <section class="card">
+            <h2>About Tugbo River</h2>
+            <p><strong>Location:</strong> Masbate City, Masbate Province, Philippines.</p>
+            <p><strong>Barangays Covered:</strong> Primarily Barangay Tugbo, plus nearby areas such as Umabay Exterior and Interior.</p>
+            <p><strong>Significance:</strong> Key drainage channel for upland rainwater into Masbate Bay; vital for irrigation, fishing, and flood control.</p>
+            <h3>Physical Features</h3>
+            <ul>
+              <li>Mouth: Masbate Bay, Visayan Sea</li>
+              <li>Watershed: Tugbo River Watershed</li>
+              <li>Tributaries: Small creeks from uplands</li>
+            </ul>
+            <h3>Environmental Importance</h3>
+            <ul>
+              <li>Irrigation source for farms</li>
+              <li>Supports mangroves & estuarine habitats</li>
+              <li>Floodwater pathway during heavy rains</li>
+            </ul>
+            <h3>Flood Hazards</h3>
+            <ul>
+              <li>Frequent overflow during typhoons</li>
+              <li>Siltation reduces channel depth</li>
+              <li>Encroachment by settlements increases risk</li>
+            </ul>
+            <h3>Government Actions</h3>
+            <ul>
+              <li>Flood control revetments</li>
+              <li>Dredging projects</li>
+              <li>Mangrove rehabilitation</li>
+            </ul>
+          </section>
+        `;
+      }
+    }
+
+    function goHome() {
+      let content = document.getElementById('content');
+      content.innerHTML = `
+        <section class="card">
+          <h2>Welcome</h2>
+          <p>Select an option above to view detailed information about flood routes, magnitudes, or background on Tugbo River.</p>
+        </section>
+      `;
+      homeBtn.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
